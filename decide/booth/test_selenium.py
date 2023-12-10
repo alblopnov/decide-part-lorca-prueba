@@ -1,4 +1,4 @@
-from django.test import TestCase
+from django.test import TestCase, tag
 from django.conf import settings
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 
@@ -77,7 +77,7 @@ class MultipleChoiceQuestionBoothTest(StaticLiveServerTestCase):
 
         self.base.tearDown()
     
-
+    @tag('slow')
     def test_testquestionmultipleoptions(self):
         self.driver.get(f'{self.live_server_url}/booth/{self.v.id}/')
         self.driver.set_window_size(910, 1016)
