@@ -77,6 +77,7 @@ class MultipleChoiceQuestionBoothTest(StaticLiveServerTestCase):
 
         self.base.tearDown()
     
+
     @tag("slow")
     def test_testquestionmultipleoptions(self):
         self.driver.get(f'{self.live_server_url}/booth/{self.v.id}/')
@@ -104,7 +105,13 @@ class MultipleChoiceQuestionBoothTest(StaticLiveServerTestCase):
             )
 
         self.driver.find_element(By.CSS_SELECTOR, "form:nth-child(1) > .form-check").click()
+        WebDriverWait(self.driver, 10).until(
+        EC.visibility_of_element_located((By.CSS_SELECTOR, "form:nth-child(2) > .form-check"))
+            )
         self.driver.find_element(By.CSS_SELECTOR, "form:nth-child(2) > .form-check").click()
+        WebDriverWait(self.driver, 10).until(
+        EC.visibility_of_element_located((By.CSS_SELECTOR, "form:nth-child(3) > .form-check"))
+            )
         self.driver.find_element(By.CSS_SELECTOR, "form:nth-child(3) > .form-check").click()
         
         checkboxes = self.driver.find_elements(By.CSS_SELECTOR, '.form-check input[type="checkbox"]')
