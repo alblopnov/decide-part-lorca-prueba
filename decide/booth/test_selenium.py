@@ -77,7 +77,7 @@ class MultipleChoiceQuestionBoothTest(StaticLiveServerTestCase):
 
         self.base.tearDown()
     
-    @tag('slow')
+    @tag("slow")
     def test_testquestionmultipleoptions(self):
         self.driver.get(f'{self.live_server_url}/booth/{self.v.id}/')
         self.driver.set_window_size(910, 1016)
